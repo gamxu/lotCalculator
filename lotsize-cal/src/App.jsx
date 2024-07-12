@@ -29,7 +29,10 @@ function App() {
   });
 
   useEffect(() => {
-    const lot = symbol === "Gold" ? goldCal(balance, risk, sl) : forexCal(balance, risk, sl);
+    const lot =
+      symbol === "Gold"
+        ? goldCal(balance, risk, sl)
+        : forexCal(balance, risk, sl);
     setLotSize(lot.toFixed(2));
   });
 
@@ -41,6 +44,7 @@ function App() {
           <TextField
             type="number"
             value={balance}
+            placeholder="USD"
             onChange={(e) => {
               localStorage.setItem("balance", e.target.value);
               setBalance(e.target.value);
@@ -49,10 +53,11 @@ function App() {
         </div>
 
         <div>
-          <div className="text-md">Risk%</div>
+          <div className="text-md">Risk %</div>
           <TextField
             type="number"
             value={risk}
+            placeholder="1-100"
             onChange={(e) => {
               localStorage.setItem("risk", e.target.value);
               setRisk(e.target.value);
@@ -90,11 +95,11 @@ function App() {
 export default App;
 
 const goldCal = (balance, risk, sl) => {
-  const result = (balance * risk) / sl;
+  const result = (balance * (risk / 100)) / sl;
   return result;
 };
 
 const forexCal = (balance, risk, sl) => {
-  const result = (balance * risk) / (sl * 10);
+  const result = (balance * (risk / 100)) / (sl * 10);
   return result;
 };
