@@ -37,51 +37,58 @@ function App() {
   });
 
   return (
-    <div className="font-main py-[100px] flex flex-col items-center gap-[40px]">
-      <div className="flex flex-col gap-5">
-        <div>
-          <div className="text-md">Total Balance</div>
-          <TextField
-            type="number"
-            value={balance}
-            placeholder="USD"
-            onChange={(e) => {
-              localStorage.setItem("balance", e.target.value);
-              setBalance(e.target.value);
-            }}
-          />
-        </div>
+    <div className="font-main py-[50px] flex flex-col items-center gap-[10px]">
+      <img className="w-[100px]" src="/web-icon.png" />
+      <div className="flex flex-col gap-[40px]">
+        <div className="flex flex-col gap-5">
+          <div>
+            <div className="text-md">Total Balance</div>
+            <TextField
+              type="number"
+              value={balance}
+              placeholder="USD"
+              onChange={(e) => {
+                localStorage.setItem("balance", e.target.value);
+                setBalance(e.target.value);
+              }}
+            />
+          </div>
 
+          <div>
+            <div className="text-md">Risk %</div>
+            <TextField
+              type="number"
+              value={risk}
+              placeholder="1-100"
+              onChange={(e) => {
+                localStorage.setItem("risk", e.target.value);
+                setRisk(e.target.value);
+              }}
+            />
+          </div>
+        </div>
         <div>
-          <div className="text-md">Risk %</div>
+          <FormControl>
+            <div>Symbol</div>
+            <RadioGroup row onChange={handleChange} value={symbol}>
+              <FormControlLabel value="Gold" control={<Radio />} label="Gold" />
+              <FormControlLabel
+                value="Forex"
+                control={<Radio />}
+                label="Forex"
+              />
+            </RadioGroup>
+          </FormControl>
+          <div className="text-md">{`StopLoss (TradingView)`}</div>
           <TextField
             type="number"
-            value={risk}
-            placeholder="1-100"
+            value={sl}
             onChange={(e) => {
-              localStorage.setItem("risk", e.target.value);
-              setRisk(e.target.value);
+              localStorage.setItem("sl", e.target.value);
+              setSL(e.target.value);
             }}
           />
         </div>
-      </div>
-      <div>
-        <FormControl>
-          <div>Symbol</div>
-          <RadioGroup row onChange={handleChange} value={symbol}>
-            <FormControlLabel value="Gold" control={<Radio />} label="Gold" />
-            <FormControlLabel value="Forex" control={<Radio />} label="Forex" />
-          </RadioGroup>
-        </FormControl>
-        <div className="text-md">{`StopLoss (TradingView)`}</div>
-        <TextField
-          type="number"
-          value={sl}
-          onChange={(e) => {
-            localStorage.setItem("sl", e.target.value);
-            setSL(e.target.value);
-          }}
-        />
       </div>
 
       <div className="flex flex-col gap-3">
