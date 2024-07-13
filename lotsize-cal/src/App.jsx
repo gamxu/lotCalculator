@@ -37,8 +37,8 @@ function App() {
   });
 
   return (
-    <div className="font-main py-[30px] flex flex-col items-center gap-[10px]">
-      <img className="w-[100px]" src="/web-icon.png" />
+    <div className="font-main py-[30px] flex flex-col items-center gap-[30px]">
+      <img className="w-[200px]" src="/logo.svg" />
       <div className="flex flex-col gap-[20px]">
         <div className="flex flex-col gap-5">
           <div>
@@ -91,7 +91,7 @@ function App() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 mt-3">
+      <div className="flex flex-col gap-3">
         <div className="text-xl text-center">Lot Size</div>
         <div className="text-4xl text-center ">{lotSize}</div>
       </div>
